@@ -3,7 +3,6 @@ package com.sense.weather.weatherapp.service;
 import com.sense.weather.weatherapp.response.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -29,7 +28,7 @@ public class OpenWeatherClient {
         this.restTemplate = restTemplate;
     }
 
-    public WeatherResponse getWeatherByCityId(int cityId){
+    public WeatherResponse getWeatherByCityId(int cityId) {
         return restTemplate.getForEntity(
                 baseUrl.replace(CITY_ID, String.valueOf(cityId)).replace(UNITS, units).replace(APP_ID, appId),
                 WeatherResponse.class)
